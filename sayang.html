@@ -10,655 +10,623 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&family=Pacifico&display=swap"
         rel="stylesheet">
-    <style>
-        @media (max-width: 576px) {
-
-            /* Perbaikan untuk modal di mobile */
-            .modal {
-                -webkit-overflow-scrolling: touch;
-                overflow-y: auto;
-                position: fixed;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
+        <style>
+            @media (max-width: 576px) {
+                /* Perbaikan untuk modal di mobile */
+                .modal {
+                    -webkit-overflow-scrolling: touch;
+                    overflow-y: auto;
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                }
+    
+                .modal-dialog {
+                    margin: 10px auto;
+                    max-width: 95%;
+                    min-height: 100%;
+                    display: flex;
+                    align-items: center;
+                }
+    
+                .modal-content {
+                    border-radius: 15px;
+                    overflow: hidden;
+                    background-color: #8B0000; /* Merah tua */
+                }
+    
+                /* Pastikan background tetap stabil */
+                body.modal-open {
+                    position: fixed;
+                    width: 100%;
+                    overflow: hidden;
+                }
+    
+                /* Perbaikan khusus untuk elemen heart di modal */
+                #loveModal .heart {
+                    font-size: 3rem !important;
+                    margin-bottom: 0.5rem;
+                    color: #FFD700; /* Emas */
+                }
+    
+                #loveModal .modal-title {
+                    font-size: 1.8rem !important;
+                    color: #FFD700; /* Emas */
+                }
+    
+                #loveModal p {
+                    font-size: 0.95rem;
+                    padding: 0 10px;
+                    color: white;
+                }
             }
-
-            .modal-dialog {
-                margin: 10px auto;
-                max-width: 95%;
-                min-height: 100%;
-                display: flex;
-                align-items: center;
-            }
-
-            .modal-content {
-                border-radius: 15px;
-                overflow: hidden;
-            }
-
-            /* Pastikan background tetap stabil */
+    
+            /* Tambahkan ini di bagian paling bawah CSS Anda */
             body.modal-open {
+                padding-right: 0 !important;
+                overflow: hidden;
                 position: fixed;
                 width: 100%;
+            }
+    
+            .modal {
+                -webkit-overflow-scrolling: touch;
+            }
+    
+            .modal-open .container {
+                /* Mencegah layout shift */
+                padding-right: var(--bs-gutter-x, .75rem);
+                padding-left: var(--bs-gutter-x, .75rem);
+            }
+    
+            /* Untuk memastikan message-box tetap stabil */
+            .modal-open .message-box {
+                margin-right: 0 !important;
+                transition: none !important;
+            }
+    
+            :root {
+                --pink-light: #FFF1F1; /* Merah muda pucat */
+                --pink-medium: #C93756; /* Merah Cina */
+                --pink-dark: #8B0000; /* Merah tua */
+                --red-heart: #FF0000; /* Merah cerah */
+                --gold: #FFD700; /* Emas */
+            }
+    
+            body {
+                background: linear-gradient(135deg, #FAF0E6 0%, #FFE4E1 100%);
+                min-height: 100vh;
+                font-family: 'Montserrat', sans-serif;
+                color: #333;
+                overflow-x: hidden;
+                position: relative;
+                background-image: url('https://www.transparenttextures.com/patterns/chinese-pattern.png');
+            }
+    
+            .love-title {
+                font-family: 'Ma Shan Zheng', cursive; /* Font gaya Cina */
+                font-size: 4.5rem;
+                background: linear-gradient(to right, #8B0000, #C93756, #FF0000);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                text-shadow: 2px 2px 8px rgba(139, 0, 0, 0.2);
+                margin-bottom: 1rem !important;
+                position: relative;
+                display: inline-block;
+            }
+    
+            .love-title::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(to right, transparent, #8B0000, transparent);
+                border-radius: 50%;
+            }
+    
+            .heart {
+                color: var(--red-heart);
+                display: inline-block;
+                animation: heartbeat 1.5s infinite, float 6s ease-in-out infinite;
+                text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            }
+    
+            @keyframes heartbeat {
+                0% {
+                    transform: scale(1);
+                }
+    
+                25% {
+                    transform: scale(1.1);
+                }
+    
+                50% {
+                    transform: scale(1);
+                }
+    
+                75% {
+                    transform: scale(1.1);
+                }
+    
+                100% {
+                    transform: scale(1);
+                }
+            }
+    
+            @keyframes float {
+                0% {
+                    transform: translateY(0);
+                }
+    
+                50% {
+                    transform: translateY(-15px);
+                }
+    
+                100% {
+                    transform: translateY(0);
+                }
+            }
+    
+            .message-box {
+                background: rgba(255, 240, 240, 0.95);
+                border-radius: 25px;
+                box-shadow: 0 15px 35px rgba(139, 0, 0, 0.2),
+                    inset 0 0 20px rgba(255, 255, 255, 0.5);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 215, 0, 0.4); /* Emas */
+                overflow: hidden;
+                position: relative;
+                z-index: 10;
+                transition: all 0.5s ease;
+                padding: 40px;
+                border-top: 5px solid var(--pink-medium);
+            }
+    
+            .message-box::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 5px;
+                background: linear-gradient(to right, #8B0000, #C93756, #FF0000);
+            }
+    
+            .message-box:hover {
+                transform: translateY(-5px) scale(1.01);
+                box-shadow: 0 20px 50px rgba(139, 0, 0, 0.4);
+            }
+    
+            .btn-love {
+                background: linear-gradient(45deg, #8B0000, #C93756);
+                border: none;
+                color: #FFD700; /* Emas */
+                transition: all 0.4s;
+                font-weight: 600;
+                letter-spacing: 1px;
+                position: relative;
+                overflow: hidden;
+                border-radius: 50px;
+                padding: 15px 40px;
+                box-shadow: 0 5px 20px rgba(139, 0, 0, 0.4);
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                z-index: 1;
+            }
+    
+            .btn-love:hover {
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 12px 30px rgba(139, 0, 0, 0.6);
+                background: linear-gradient(45deg, #C93756, #8B0000);
+                color: #FFD700;
+            }
+    
+            .btn-love:active {
+                transform: translateY(1px);
+            }
+    
+            .btn-love::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(45deg, #8B0000, #C93756);
+                z-index: -1;
+                opacity: 0;
+                transition: opacity 0.4s;
+            }
+    
+            .btn-love:hover::before {
+                opacity: 1;
+            }
+    
+            .btn-love::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: rgba(255, 215, 0, 0.2); /* Emas */
+                transform: rotate(45deg);
+                transition: all 0.7s;
+                pointer-events: none;
+                z-index: -1;
+            }
+    
+            .btn-love:hover::after {
+                left: 100%;
+            }
+    
+            .hidden-message {
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+            }
+    
+            .hidden-message.show {
+                max-height: 2000px;
+                opacity: 1;
+                padding-top: 30px;
+            }
+    
+            .love-letter {
+                background: url('https://www.transparenttextures.com/patterns/rice-paper.png');
+                padding: 40px;
+                border-radius: 15px;
+                position: relative;
+                transform: rotate(-1deg);
+                box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05),
+                    0 5px 20px rgba(0, 0, 0, 0.1);
+                border: 1px solid rgba(139, 0, 0, 0.2);
+                background-color: #FFF5F5;
+                font-size: 1.1rem;
+                line-height: 1.8;
+            }
+    
+            .love-letter::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 40px;
+                background: linear-gradient(to bottom, rgba(255, 240, 240, 0.9), rgba(255, 240, 240, 0));
+            }
+    
+            .love-letter::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 40px;
+                background: linear-gradient(to top, rgba(255, 240, 240, 0.9), rgba(255, 240, 240, 0));
+            }
+    
+            .signature {
+                font-family: 'Ma Shan Zheng', cursive; /* Font gaya Cina */
+                font-size: 2.5rem;
+                color: var(--pink-dark);
+                margin-top: 30px;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                position: relative;
+                display: inline-block;
+            }
+    
+            .signature::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(to right, transparent, var(--pink-dark), transparent);
+            }
+    
+            /* Particle background */
+            .particles {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                pointer-events: none;
                 overflow: hidden;
             }
-
-            /* Perbaikan khusus untuk elemen heart di modal */
-            #loveModal .heart {
-                font-size: 3rem !important;
-                margin-bottom: 0.5rem;
-            }
-
-            #loveModal .modal-title {
-                font-size: 1.8rem !important;
-            }
-
-            #loveModal p {
-                font-size: 0.95rem;
-                padding: 0 10px;
-            }
-        }
-
-        /* Tambahkan ini di bagian paling bawah CSS Anda */
-        body.modal-open {
-            padding-right: 0 !important;
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-        }
-
-        .modal {
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .modal-open .container {
-            /* Mencegah layout shift */
-            padding-right: var(--bs-gutter-x, .75rem);
-            padding-left: var(--bs-gutter-x, .75rem);
-        }
-
-        /* Untuk memastikan message-box tetap stabil */
-        .modal-open .message-box {
-            margin-right: 0 !important;
-            transition: none !important;
-        }
-
-        :root {
-            --pink-light: #fff5f5;
-            --pink-medium: #ffb6c1;
-            --pink-dark: #ff69b4;
-            --red-heart: #ff4757;
-            --gold: #ffd700;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #ffeef8 100%);
-            min-height: 100vh;
-            font-family: 'Montserrat', sans-serif;
-            color: #333;
-            overflow-x: hidden;
-            position: relative;
-            background-image: url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
-        }
-
-        .love-title {
-            font-family: 'Pacifico', cursive;
-            font-size: 4.5rem;
-            background: linear-gradient(to right, #ff758c, #ff7eb3, #ff69b4);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 2px 2px 8px rgba(255, 105, 180, 0.2);
-            margin-bottom: 1rem !important;
-            position: relative;
-            display: inline-block;
-        }
-
-        .love-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, transparent, #ff69b4, transparent);
-            border-radius: 50%;
-        }
-
-        .heart {
-            color: var(--red-heart);
-            display: inline-block;
-            animation: heartbeat 1.5s infinite, float 6s ease-in-out infinite;
-            text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
-        }
-
-        @keyframes heartbeat {
-            0% {
-                transform: scale(1);
-            }
-
-            25% {
-                transform: scale(1.1);
-            }
-
-            50% {
-                transform: scale(1);
-            }
-
-            75% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        .message-box {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2),
-                inset 0 0 20px rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            overflow: hidden;
-            position: relative;
-            z-index: 10;
-            transition: all 0.5s ease;
-            padding: 40px;
-            border-top: 5px solid var(--pink-medium);
-        }
-
-        .message-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(to right, #ff758c, #ff7eb3, #ff69b4);
-        }
-
-        .message-box:hover {
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.4);
-        }
-
-        .btn-love {
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
-            border: none;
-            color: white;
-            transition: all 0.4s;
-            font-weight: 600;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 50px;
-            padding: 15px 40px;
-            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            z-index: 1;
-        }
-
-        .btn-love:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(255, 107, 107, 0.6);
-            background: linear-gradient(45deg, #ff8e8e, #ff6b6b);
-            color: white;
-        }
-
-        .btn-love:active {
-            transform: translateY(1px);
-        }
-
-        .btn-love::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #ff69b4, #ff8e8e);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .btn-love:hover::before {
-            opacity: 1;
-        }
-
-        .btn-love::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(45deg);
-            transition: all 0.7s;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .btn-love:hover::after {
-            left: 100%;
-        }
-
-        .hidden-message {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .hidden-message.show {
-            max-height: 2000px;
-            opacity: 1;
-            padding-top: 30px;
-        }
-
-        .love-letter {
-            background: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            padding: 40px;
-            border-radius: 15px;
-            position: relative;
-            transform: rotate(-1deg);
-            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05),
-                0 5px 20px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            background-color: #fff9f9;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .love-letter::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
-        }
-
-        .love-letter::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: linear-gradient(to top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
-        }
-
-        .signature {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: var(--pink-dark);
-            margin-top: 30px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-            display: inline-block;
-        }
-
-        .signature::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--pink-dark), transparent);
-        }
-
-        /* Particle background */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            background: radial-gradient(circle, var(--pink-dark) 0%, rgba(255, 255, 255, 0) 70%);
-            border-radius: 50%;
-            opacity: 0;
-            animation: float-up linear infinite;
-        }
-
-        @keyframes float-up {
-            to {
-                transform: translateY(-100vh);
+    
+            .particle {
+                position: absolute;
+                background: radial-gradient(circle, var(--pink-dark) 0%, rgba(255, 240, 240, 0) 70%);
+                border-radius: 50%;
                 opacity: 0;
+                animation: float-up linear infinite;
             }
-        }
-
-        /* Floating hearts */
-        .floating-hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .floating-heart {
-            position: absolute;
-            font-size: 24px;
-            color: var(--red-heart);
-            animation: floating-heart linear infinite;
-            opacity: 0;
-            text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
-        }
-
-        @keyframes floating-heart {
-            0% {
-                transform: translateY(0) rotate(0deg);
+    
+            @keyframes float-up {
+                to {
+                    transform: translateY(-100vh);
+                    opacity: 0;
+                }
+            }
+    
+            /* Floating hearts */
+            .floating-hearts {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                pointer-events: none;
+            }
+    
+            .floating-heart {
+                position: absolute;
+                font-size: 24px;
+                color: var(--red-heart);
+                animation: floating-heart linear infinite;
                 opacity: 0;
+                text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
             }
-
-            10% {
-                opacity: 1;
+    
+            @keyframes floating-heart {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 0;
+                }
+    
+                10% {
+                    opacity: 1;
+                }
+    
+                90% {
+                    opacity: 1;
+                }
+    
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
             }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
+    
+            /* Confetti */
+            .confetti {
+                position: absolute;
+                width: 12px;
+                height: 12px;
                 opacity: 0;
+                z-index: 100;
+                animation: confetti-fall 5s linear forwards;
+                background-color: #8B0000; /* Merah tua */
             }
-        }
-
-        /* Confetti */
-        .confetti {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            opacity: 0;
-            z-index: 100;
-            animation: confetti-fall 5s linear forwards;
-        }
-
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg) scale(0);
-                opacity: 1;
+    
+            @keyframes confetti-fall {
+                0% {
+                    transform: translateY(-100px) rotate(0deg) scale(0);
+                    opacity: 1;
+                }
+    
+                10% {
+                    transform: translateY(0) rotate(0deg) scale(1);
+                }
+    
+                100% {
+                    transform: translateY(100vh) rotate(360deg) scale(0.5);
+                    opacity: 0;
+                }
             }
-
-            10% {
-                transform: translateY(0) rotate(0deg) scale(1);
+    
+            /* Photo frame */
+            .photo-frame {
+                border: 15px solid #8B0000; /* Merah tua */
+                border-radius: 5px;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+                transform: rotate(-3deg);
+                transition: all 0.5s ease;
+                background: white;
+                overflow: hidden;
+                position: relative;
             }
-
-            100% {
-                transform: translateY(100vh) rotate(360deg) scale(0.5);
-                opacity: 0;
+    
+            .photo-frame::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(201, 55, 86, 0.3) 0%, rgba(255, 240, 240, 0) 50%);
+                z-index: 1;
             }
-        }
-
-        /* Photo frame */
-        .photo-frame {
-            border: 15px solid white;
-            border-radius: 5px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-            transform: rotate(-3deg);
-            transition: all 0.5s ease;
-            background: white;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .photo-frame::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 182, 193, 0.3) 0%, rgba(255, 255, 255, 0) 50%);
-            z-index: 1;
-        }
-
-        .photo-frame::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 2px dashed rgba(255, 105, 180, 0.5);
-            border-radius: 5px;
-            animation: rotateBorder 20s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes rotateBorder {
-            0% {
-                transform: rotate(0deg);
+    
+            .photo-frame::after {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                right: -10px;
+                bottom: -10px;
+                border: 2px dashed rgba(255, 215, 0, 0.5); /* Emas */
+                border-radius: 5px;
+                animation: rotateBorder 20s linear infinite;
+                pointer-events: none;
             }
-
-            100% {
-                transform: rotate(360deg);
+    
+            @keyframes rotateBorder {
+                0% {
+                    transform: rotate(0deg);
+                }
+    
+                100% {
+                    transform: rotate(360deg);
+                }
             }
-        }
-
-        .photo-frame:hover {
-            transform: rotate(0deg) scale(1.05);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Music player */
-        .music-player {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            background: white;
-            border-radius: 50px;
-            padding: 10px 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .music-player:hover {
-            transform: scale(1.05);
-        }
-
-        .music-player i {
-            font-size: 1.5rem;
-            color: var(--pink-dark);
-            margin-right: 10px;
-        }
-
-        .music-player span {
-            font-weight: 600;
-            color: #555;
-        }
-
-        /* Floating rose petals */
-        .rose-petal {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23ff6b81" d="M50,10 C60,20 70,25 80,30 C90,35 95,40 95,50 C95,60 90,65 80,70 C70,75 60,80 50,90 C40,80 30,75 20,70 C10,65 5,60 5,50 C5,40 10,35 20,30 C30,25 40,20 50,10 Z"/></svg>');
-            background-size: contain;
-            opacity: 0;
-            z-index: 2;
-            animation: falling-petal linear infinite;
-        }
-
-        @keyframes falling-petal {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 0;
+    
+            .photo-frame:hover {
+                transform: rotate(0deg) scale(1.05);
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             }
-
-            10% {
-                opacity: 0.8;
+    
+            /* Music player */
+            .music-player {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                z-index: 1000;
+                background: #8B0000; /* Merah tua */
+                border-radius: 50px;
+                padding: 10px 20px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                transition: all 0.3s;
             }
-
-            90% {
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Candle light effect */
-        .candle-light {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
-            filter: blur(10px);
-            animation: flicker 3s ease-in-out infinite alternate;
-            z-index: 0;
-        }
-
-        @keyframes flicker {
-
-            0%,
-            100% {
-                opacity: 0.8;
-                transform: scale(1);
-            }
-
-            25% {
-                opacity: 0.9;
+    
+            .music-player:hover {
                 transform: scale(1.05);
             }
-
-            50% {
-                opacity: 0.7;
-                transform: scale(0.95);
+    
+            .music-player i {
+                font-size: 1.5rem;
+                color: #FFD700; /* Emas */
+                margin-right: 10px;
             }
-
-            75% {
-                opacity: 0.85;
-                transform: scale(1.03);
+    
+            .music-player span {
+                font-weight: 600;
+                color: #FFD700; /* Emas */
             }
-        }
-
-        /* Romantic quote */
-        .romantic-quote {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: var(--pink-dark);
-            text-align: center;
-            margin: 30px 0;
-            position: relative;
-        }
-
-        .romantic-quote::before,
-        .romantic-quote::after {
-            content: '"';
-            font-size: 2.5rem;
-            color: var(--pink-medium);
-            position: relative;
-            top: 10px;
-        }
-
-        .romantic-quote::before {
-            margin-right: 10px;
-        }
-
-        .romantic-quote::after {
-            margin-left: 10px;
-        }
-
-        /* Love meter */
-        .love-meter {
-            width: 100%;
-            height: 20px;
-            background: #f0f0f0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 20px 0;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .love-meter-fill {
-            height: 100%;
-            background: linear-gradient(to right, #ff6b6b, #ff69b4);
-            border-radius: 10px;
-            width: 0;
-            transition: width 2s ease-in-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .love-meter-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg,
-                    rgba(255, 255, 255, 0) 0%,
-                    rgba(255, 255, 255, 0.8) 50%,
-                    rgba(255, 255, 255, 0) 100%);
-            animation: shine 2s infinite;
-        }
-
-        @keyframes shine {
-            0% {
-                transform: translateX(-100%);
+    
+            /* Floating lanterns */
+            .lantern {
+                position: absolute;
+                width: 30px;
+                height: 40px;
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 40"><path fill="%238B0000" d="M15,0 C20,0 25,5 25,10 C25,15 20,20 15,25 C10,20 5,15 5,10 C5,5 10,0 15,0 Z M15,30 C17,30 19,32 19,35 C19,38 17,40 15,40 C13,40 11,38 11,35 C11,32 13,30 15,30 Z"/></svg>');
+                background-size: contain;
+                opacity: 0;
+                z-index: 2;
+                animation: falling-lantern linear infinite;
             }
-
-            100% {
-                transform: translateX(100%);
+    
+            @keyframes falling-lantern {
+                0% {
+                    transform: translateY(-100px) rotate(0deg);
+                    opacity: 0;
+                }
+    
+                10% {
+                    opacity: 0.8;
+                }
+    
+                90% {
+                    opacity: 0.8;
+                }
+    
+                100% {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
             }
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .love-title {
-                font-size: 2.8rem;
+    
+            /* Romantic quote */
+            .romantic-quote {
+                font-family: 'Ma Shan Zheng', cursive; /* Font gaya Cina */
+                font-size: 1.8rem;
+                color: var(--pink-dark);
+                text-align: center;
+                margin: 30px 0;
+                position: relative;
             }
-
-            .message-box {
-                padding: 25px;
+    
+            .romantic-quote::before,
+            .romantic-quote::after {
+                content: '"';
+                font-size: 2.5rem;
+                color: var(--gold);
+                position: relative;
+                top: 10px;
             }
-
-            .love-letter {
-                padding: 25px;
+    
+            .romantic-quote::before {
+                margin-right: 10px;
             }
-        }
-    </style>
+    
+            .romantic-quote::after {
+                margin-left: 10px;
+            }
+    
+            /* Love meter */
+            .love-meter {
+                width: 100%;
+                height: 20px;
+                background: #f0f0f0;
+                border-radius: 10px;
+                overflow: hidden;
+                margin: 20px 0;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            }
+    
+            .love-meter-fill {
+                height: 100%;
+                background: linear-gradient(to right, #8B0000, #C93756);
+                border-radius: 10px;
+                width: 0;
+                transition: width 2s ease-in-out;
+                position: relative;
+                overflow: hidden;
+            }
+    
+            .love-meter-fill::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(90deg,
+                        rgba(255, 255, 255, 0) 0%,
+                        rgba(255, 215, 0, 0.8) 50%, /* Emas */
+                        rgba(255, 255, 255, 0) 100%);
+                animation: shine 2s infinite;
+            }
+    
+            @keyframes shine {
+                0% {
+                    transform: translateX(-100%);
+                }
+    
+                100% {
+                    transform: translateX(100%);
+                }
+            }
+    
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .love-title {
+                    font-size: 2.8rem;
+                }
+    
+                .message-box {
+                    padding: 25px;
+                }
+    
+                .love-letter {
+                    padding: 25px;
+                }
+            }
+        </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -670,7 +638,7 @@
     <div class="floating-hearts" id="floatingHearts"></div>
 
     <!-- Rose petals -->
-    <div class="rose-petals" id="rosePetals"></div>
+    <!-- <div class="rose-petals" id="rosePetals"></div> -->
 
     <!-- Candle lights -->
     <div class="candle-light" style="top: 10%; left: 10%;"></div>
