@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Cinta Terindah</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <style>
+        @media (max-width: 576px) {
+
+            /* Perbaikan untuk modal di mobile */
+            .modal {
+                -webkit-overflow-scrolling: touch;
+                overflow-y: auto;
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+
+            .modal-dialog {
+                margin: 10px auto;
+                max-width: 95%;
+                min-height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .modal-content {
+                border-radius: 15px;
+                overflow: hidden;
+            }
+
+            /* Pastikan background tetap stabil */
+            body.modal-open {
+                position: fixed;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            /* Perbaikan khusus untuk elemen heart di modal */
+            #loveModal .heart {
+                font-size: 3rem !important;
+                margin-bottom: 0.5rem;
+            }
+
+            #loveModal .modal-title {
+                font-size: 1.8rem !important;
+            }
+
+            #loveModal p {
+                font-size: 0.95rem;
+                padding: 0 10px;
+            }
+        }
+
+        /* Tambahkan ini di bagian paling bawah CSS Anda */
+        body.modal-open {
+            padding-right: 0 !important;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        .modal {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-open .container {
+            /* Mencegah layout shift */
+            padding-right: var(--bs-gutter-x, .75rem);
+            padding-left: var(--bs-gutter-x, .75rem);
+        }
+
+        /* Untuk memastikan message-box tetap stabil */
+        .modal-open .message-box {
+            margin-right: 0 !important;
+            transition: none !important;
+        }
+
+        :root {
+            --pink-light: #fff5f5;
+            --pink-medium: #ffb6c1;
+            --pink-dark: #ff69b4;
+            --red-heart: #ff4757;
+            --gold: #ffd700;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffeef8 100%);
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+            background-image: url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
+        }
+
+        .love-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 4.5rem;
+            background: linear-gradient(to right, #ff758c, #ff7eb3, #ff69b4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 8px rgba(255, 105, 180, 0.2);
+            margin-bottom: 1rem !important;
+            position: relative;
+            display: inline-block;
+        }
+
+        .love-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ff69b4, transparent);
+            border-radius: 50%;
+        }
+
+        .heart {
+            color: var(--red-heart);
+            display: inline-block;
+            animation: heartbeat 1.5s infinite, float 6s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.1);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2),
+                inset 0 0 20px rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+            transition: all 0.5s ease;
+            padding: 40px;
+            border-top: 5px solid var(--pink-medium);
+        }
+
+        .message-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #ff758c, #ff7eb3, #ff69b4);
+        }
+
+        .message-box:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.4);
+        }
+
+        .btn-love {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            border: none;
+            color: white;
+            transition: all 0.4s;
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50px;
+            padding: 15px 40px;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        .btn-love:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 107, 107, 0.6);
+            background: linear-gradient(45deg, #ff8e8e, #ff6b6b);
+            color: white;
+        }
+
+        .btn-love:active {
+            transform: translateY(1px);
+        }
+
+        .btn-love::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff69b4, #ff8e8e);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .btn-love:hover::before {
+            opacity: 1;
+        }
+
+        .btn-love::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg);
+            transition: all 0.7s;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .btn-love:hover::after {
+            left: 100%;
+        }
+
+        .hidden-message {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .hidden-message.show {
+            max-height: 2000px;
+            opacity: 1;
+            padding-top: 30px;
+        }
+
+        .love-letter {
+            background: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            padding: 40px;
+            border-radius: 15px;
+            position: relative;
+            transform: rotate(-1deg);
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05),
+                0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: #fff9f9;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .love-letter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+        }
+
+        .love-letter::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--pink-dark);
+            margin-top: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+        }
+
+        .signature::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--pink-dark), transparent);
+        }
+
+        /* Particle background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, var(--pink-dark) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float-up linear infinite;
+        }
+
+        @keyframes float-up {
+            to {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Floating hearts */
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 24px;
+            color: var(--red-heart);
+            animation: floating-heart linear infinite;
+            opacity: 0;
+            text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+        }
+
+        @keyframes floating-heart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            opacity: 0;
+            z-index: 100;
+            animation: confetti-fall 5s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg) scale(0);
+                opacity: 1;
+            }
+
+            10% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Photo frame */
+        .photo-frame {
+            border: 15px solid white;
+            border-radius: 5px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            transform: rotate(-3deg);
+            transition: all 0.5s ease;
+            background: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.3) 0%, rgba(255, 255, 255, 0) 50%);
+            z-index: 1;
+        }
+
+        .photo-frame::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed rgba(255, 105, 180, 0.5);
+            border-radius: 5px;
+            animation: rotateBorder 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotateBorder {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Music player */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: white;
+            border-radius: 50px;
+            padding: 10px 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .music-player:hover {
+            transform: scale(1.05);
+        }
+
+        .music-player i {
+            font-size: 1.5rem;
+            color: var(--pink-dark);
+            margin-right: 10px;
+        }
+
+        .music-player span {
+            font-weight: 600;
+            color: #555;
+        }
+
+        /* Floating rose petals */
+        .rose-petal {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23ff6b81" d="M50,10 C60,20 70,25 80,30 C90,35 95,40 95,50 C95,60 90,65 80,70 C70,75 60,80 50,90 C40,80 30,75 20,70 C10,65 5,60 5,50 C5,40 10,35 20,30 C30,25 40,20 50,10 Z"/></svg>');
+            background-size: contain;
+            opacity: 0;
+            z-index: 2;
+            animation: falling-petal linear infinite;
+        }
+
+        @keyframes falling-petal {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            90% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Candle light effect */
+        .candle-light {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(10px);
+            animation: flicker 3s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes flicker {
+
+            0%,
+            100% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+
+            25% {
+                opacity: 0.9;
+                transform: scale(1.05);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(0.95);
+            }
+
+            75% {
+                opacity: 0.85;
+                transform: scale(1.03);
+            }
+        }
+
+        /* Romantic quote */
+        .romantic-quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--pink-dark);
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .romantic-quote::before,
+        .romantic-quote::after {
+            content: '"';
+            font-size: 2.5rem;
+            color: var(--pink-medium);
+            position: relative;
+            top: 10px;
+        }
+
+        .romantic-quote::before {
+            margin-right: 10px;
+        }
+
+        .romantic-quote::after {
+            margin-left: 10px;
+        }
+
+        /* Love meter */
+        .love-meter {
+            width: 100%;
+            height: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .love-meter-fill {
+            height: 100%;
+            background: linear-gradient(to right, #ff6b6b, #ff69b4);
+            border-radius: 10px;
+            width: 0;
+            transition: width 2s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .love-meter-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.8) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .love-title {
+                font-size: 2.8rem;
+            }
+
+            .message-box {
+                padding: 25px;
+            }
+
+            .love-letter {
+                padding: 25px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Particle background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Floating hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Rose petals -->
+    <div class="rose-petals" id="rosePetals"></div>
+
+    <!-- Candle lights -->
+    <div class="candle-light" style="top: 10%; left: 10%;"></div>
+    <div class="candle-light" style="top: 10%; right: 10%;"></div>
+    <div class="candle-light" style="bottom: 10%; left: 10%;"></div>
+    <div class="candle-light" style="bottom: 10%; right: 10%;"></div>
+
+    <!-- Music player -->
+    <div class="music-player" id="musicPlayer">
+        <i class="fas fa-music"></i>
+        <span>Putar lagu favorit kita</span>
+    </div>
+
+    <!-- Main content -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="message-box animate__animated animate__fadeIn">
+                    <div class="text-center mb-5">
+                        <h1 class="love-title mb-3">
+                            Untuk <span class="heart">❤</span> Kamu yang Spesial
+                        </h1>
+                        <p class="lead text-muted">
+                            Beberapa kata sederhana dari hatiku buat kamu
+                        </p>
+                    </div>
+
+                    <div class="romantic-quote animate__animated animate__fadeInUp">
+                        "Cinta nggak harus ribet, yang penting saling ngerti dan sama-sama nyaman."
+                    </div>
+
+                    <div class="row align-items-center mb-5">
+                        <div class="col-md-6 mb-4 mb-md-0">
+                            <div class="photo-frame position-relative animate__animated animate__fadeInLeft">
+                                <!-- <img src="https://i.pinimg.com/originals/90/80/60/9080607321ab98fa3e70dd24b2513a20.gif" -->
+                                <img src="./kita.jpeg" alt="Love" class="img-fluid w-100">
+                                <div class="position-absolute bottom-0 start-0 end-0 text-center p-3"
+                                    style="background: rgba(255,255,255,0.7); z-index: 2;">
+                                    <small class="text-muted">Kita, yang selalu seru bareng</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="love-letter animate__animated animate__fadeInRight">
+                                <p class="mb-4">
+                                    Setiap momen sama kamu itu sederhana tapi berarti. Kadang ngobrol receh aja udah
+                                    bikin hari jadi lebih baik.
+                                </p>
+                                <p class="mb-4">
+                                    Senyummu tuh bikin hati adem. Dan tawamu? Nggak pernah gagal bikin aku ikut ketawa.
+                                </p>
+                                <p class="mb-0">
+                                    Terima kasih ya, udah jadi bagian dari hariku. Nggak perlu yang berlebihan, cukup
+                                    jadi diri sendiri aja, itu udah spesial banget.
+                                </p>
+                                <div class="text-end signature animate__animated animate__fadeIn">
+                                    - Dari aku :)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button id="showMessageBtn"
+                            class="btn btn-love btn-lg mb-4 animate__animated animate__pulse animate__infinite">
+                            <i class="heart">❤</i> Lihat Pesan Tambahan <i class="heart">❤</i>
+                        </button>
+
+                        <div class="love-meter mb-4">
+                            <div class="love-meter-fill" id="loveMeter"></div>
+                        </div>
+                        <p class="text-muted mb-4">Penasaran seberapa besar rasa ini? Coba klik tombolnya~</p>
+
+                        <div id="hiddenMessage" class="hidden-message">
+                            <div class="love-letter p-4 mb-4">
+                                <h4 class="text-center mb-4"
+                                    style="font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--pink-dark);">
+                                    Tentang Kita</h4>
+                                <p class="mb-4">
+                                    Kalau cinta itu bahasa, mungkin aku cuma pengen ngobrol sama kamu tiap hari. Kalau
+                                    cinta itu perjalanan, ya semoga kita tetap jalan bareng, walau kadang pelan.
+                                </p>
+                                <p class="mb-4">
+                                    Kamu itu warna di hari-hariku. Kadang cerah, kadang mendung, tapi selalu bikin hidup
+                                    jadi lebih hidup.
+                                </p>
+                                <p class="mb-4">
+                                    Aku nggak tahu cara ngukur perasaan ini, tapi kamu selalu punya tempat di pikiranku.
+                                </p>
+                                <div class="text-center mt-4">
+                                    <span class="heart" style="font-size: 2.5rem;">❤</span>
+                                    <span class="heart" style="font-size: 3rem; animation-delay: 0.2s;">❤</span>
+                                    <span class="heart" style="font-size: 3.5rem; animation-delay: 0.4s;">❤</span>
+                                    <span class="heart" style="font-size: 4rem; animation-delay: 0.6s;">❤</span>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button id="confettiBtn" class="btn btn-love mb-4">
+                                    <i class="fas fa-heart"></i> Rayakan Yuk! <i class="fas fa-heart"></i>
+                                </button>
+                                <button id="loveCalculatorBtn" class="btn btn-outline-danger ms-3">
+                                    <i class="fas fa-calculator"></i> Coba Cek Kecocokan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 mt-5 text-muted">
+        <p class="mb-0">Dibuat dengan <i class="heart">❤</i> dan rasa yang tulus | © <span id="year"></span></p>
+    </footer>
+
+    <!-- Love Modal -->
+    <div class="modal fade" id="loveModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title love-title" style="font-size: 2rem;">Hasil Kecocokan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <div class="heart" style="font-size: 4rem; margin-bottom: 1rem;">❤</div>
+                    <h3 class="mb-3" id="lovePercentage">100%</h3>
+                    <p class="mb-0" id="loveMessage">Kayaknya kalian cocok banget deh. Kadang, nggak perlu alasan logis
+                        buat nyambung—cukup rasa yang klik.</p>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-love" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Random properties
+                const size = Math.random() * 15 + 5;
+                const posX = Math.random() * window.innerWidth;
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 20;
+                const opacity = Math.random() * 0.4 + 0.1;
+                const color = `hsl(${Math.random() * 30 + 330}, 100%, 70%)`;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}px`;
+                particle.style.bottom = `-${size}px`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.opacity = opacity;
+                particle.style.background = `radial-gradient(circle, ${color} 0%, rgba(255,255,255,0) 70%)`;
+
+                container.appendChild(particle);
+            }
+        }
+
+        // Initialize floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const heartCount = 20;
+
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.classList.add('floating-heart');
+
+                // Random properties
+                const size = Math.random() * 30 + 15;
+                const posX = Math.random() * window.innerWidth;
+                const duration = Math.random() * 20 + 15;
+                const delay = Math.random() * 20;
+                const color = `hsl(${Math.random() * 30 + 330}, 100%, 70%)`;
+
+                heart.style.fontSize = `${size}px`;
+                heart.style.left = `${posX}px`;
+                heart.style.bottom = `-${size}px`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.color = color;
+
+                container.appendChild(heart);
+            }
+        }
+
+        // Create rose petals
+        function createRosePetals() {
+            const container = document.getElementById('rosePetals');
+            if (!container) return;
+
+            const petalCount = 25;
+
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('rose-petal');
+
+                // Random properties
+                const size = Math.random() * 20 + 10;
+                const posX = Math.random() * window.innerWidth;
+                const duration = Math.random() * 15 + 10;
+                const delay = Math.random() * 15;
+                const rotation = Math.random() * 360;
+                const fallDelay = Math.random() * 5;
+
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                petal.style.left = `${posX}px`;
+                petal.style.top = `-${size}px`;
+                petal.style.animationDuration = `${duration}s`;
+                petal.style.animationDelay = `${delay}s`;
+                petal.style.transform = `rotate(${rotation}deg)`;
+
+                container.appendChild(petal);
+            }
+        }
+
+        // Show hidden message
+        document.getElementById('showMessageBtn').addEventListener('click', function () {
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            hiddenMessage.classList.add('show');
+            this.style.display = 'none';
+
+            // Fill love meter
+            const loveMeter = document.getElementById('loveMeter');
+            loveMeter.style.width = '100%';
+
+            // Create burst of hearts
+            createHeartBurst(50);
+
+            // Play romantic sound
+            playSound('https://www.soundjay.com/love/sounds/heartbeat-01.mp3', 0.3);
+        });
+
+        // Create heart burst effect
+        function createHeartBurst(count) {
+            const container = document.querySelector('body');
+
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.style.position = 'fixed';
+                heart.style.fontSize = `${Math.random() * 40 + 20}px`;
+                heart.style.color = `hsl(${Math.random() * 30 + 330}, 100%, 70%)`;
+                heart.style.left = `${50 + (Math.random() - 0.5) * 40}%`;
+                heart.style.top = `${50 + (Math.random() - 0.5) * 30}%`;
+                heart.style.zIndex = '9999';
+                heart.style.pointerEvents = 'none';
+                heart.style.userSelect = 'none';
+                heart.style.transform = 'translate(-50%, -50%) scale(0)';
+                heart.style.opacity = '0';
+                heart.style.textShadow = `0 0 ${Math.random() * 20 + 10}px rgba(255, 105, 180, 0.7)`;
+
+                container.appendChild(heart);
+
+                // Animate
+                const scale = Math.random() * 0.5 + 0.5;
+                const x = (Math.random() - 0.5) * 300;
+                const y = (Math.random() - 0.5) * 300 - 150;
+                const rot = (Math.random() - 0.5) * 720;
+
+                heart.animate([
+                    { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 },
+                    { transform: 'translate(-50%, -50%) scale(1.5)', opacity: 1, offset: 0.1 },
+                    { transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${scale}) rotate(${rot}deg)`, opacity: 0 }
+                ], {
+                    duration: 2500,
+                    easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                });
+
+                // Remove after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 2500);
+            }
+        }
+
+        // Create confetti effect
+        document.getElementById('confettiBtn').addEventListener('click', function () {
+            createConfetti(150);
+            playSound('https://www.soundjay.com/human/sounds/applause-01.mp3', 0.4);
+        });
+
+        function createConfetti(count) {
+            const container = document.querySelector('body');
+            const colors = ['#ff4757', '#ff6b81', '#ff6348', '#ffa502', '#ff7f50', '#ffb8b8', '#ff69b4', '#ff8e8e'];
+
+            for (let i = 0; i < count; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+
+                // Random properties
+                const size = Math.random() * 15 + 5;
+                const posX = Math.random() * window.innerWidth;
+                const duration = Math.random() * 4 + 2;
+                const delay = Math.random() * 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const shape = Math.random() > 0.5 ? '50%' : '0';
+                const rotation = Math.random() * 360;
+
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.left = `${posX}px`;
+                confetti.style.top = `-${size}px`;
+                confetti.style.animationDuration = `${duration}s`;
+                confetti.style.animationDelay = `${delay}s`;
+                confetti.style.backgroundColor = color;
+                confetti.style.borderRadius = shape;
+                confetti.style.transform = `rotate(${rotation}deg)`;
+
+                container.appendChild(confetti);
+
+                // Remove after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, duration * 1000);
+            }
+        }
+
+        // Love calculator
+        document.getElementById('loveCalculatorBtn').addEventListener('click', function () {
+            const loveModal = new bootstrap.Modal(document.getElementById('loveModal'));
+
+            // Random percentage between 90-100% (because why not!)
+            // const percentage = Math.floor(Math.random() * 11) + 90;
+            const percentage = 100;
+            document.getElementById('lovePercentage').textContent = `${percentage}%`;
+
+            // Different messages based on percentage
+            let message;
+            if (percentage >= 95) {
+                message = "Kalian adalah pasangan yang sempurna! Takdir memang menyatukan kalian.";
+            } else if (percentage >= 90) {
+                message = "Kecocokan kalian sangat tinggi! Cinta kalian akan abadi selamanya.";
+            } else if (percentage >= 85) {
+                message = "Hubungan kalian sangat harmonis! Teruslah saling mencintai.";
+            }
+
+            document.getElementById('loveMessage').textContent = message;
+            loveModal.show();
+
+            // Create heart burst
+            createHeartBurst(30);
+            playSound('https://www.soundjay.com/love/sounds/heartbeat-02.mp3', 0.3);
+        });
+
+        // Music player
+        const audio = new Audio('./blue.webm');
+        audio.loop = true;
+        let isPlaying = false;
+
+        document.getElementById('musicPlayer').addEventListener('click', function () {
+            if (isPlaying) {
+                audio.pause();
+                this.innerHTML = '<i class="fas fa-music"></i> <span>Putar Musik Romantis</span>';
+            } else {
+                audio.play();
+                this.innerHTML = '<i class="fas fa-pause"></i> <span>Jeda Musik</span>';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Play sound function
+        function playSound(src, volume = 1) {
+            const sound = new Audio(src);
+            sound.volume = volume;
+            sound.play().catch(e => console.log("Autoplay prevented: ", e));
+        }
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Initialize effects when page loads
+        window.addEventListener('load', () => {
+            createParticles();
+            createFloatingHearts();
+            createRosePetals();
+
+            // Animate elements sequentially
+            setTimeout(() => {
+                document.querySelector('.love-title').classList.add('animate__animated', 'animate__fadeInDown');
+            }, 300);
+
+            setTimeout(() => {
+                document.querySelector('.lead').classList.add('animate__animated', 'animate__fadeIn');
+            }, 600);
+
+            setTimeout(() => {
+                document.querySelector('.romantic-quote').classList.add('animate__animated', 'animate__fadeInUp');
+            }, 900);
+
+            setTimeout(() => {
+                document.querySelector('.photo-frame').classList.add('animate__animated', 'animate__fadeInLeft');
+            }, 1200);
+
+            setTimeout(() => {
+                document.querySelector('.love-letter').classList.add('animate__animated', 'animate__fadeInRight');
+            }, 1500);
+
+            setTimeout(() => {
+                document.querySelector('#showMessageBtn').classList.add('animate__animated', 'animate__pulse');
+            }, 1800);
+
+            // Play subtle background sound
+            playSound('https://www.soundjay.com/nature/sounds/river-01.mp3', 0.1);
+        });
+    </script>
+</body>
+
+</html>

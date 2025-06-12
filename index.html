@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Cinta di Bawah Bulan Purnama</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #f8f8f2;
+            --moonlight: #e6e6fa;
+            --night-blue: #0a0a1a;
+            --deep-purple: #3a2a3a;
+            --gold: #d4af37;
+            --silver: #c0c0c0;
+            --rose-gold: #b76e79;
+            --starry-night: #1a1a3a;
+            --twilight-blue: #191970;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--starry-night) 100%);
+            min-height: 100vh;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--ivory);
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .elegant-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .elegant-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            border-radius: 50%;
+        }
+
+        .moon-icon {
+            display: inline-block;
+            animation: gentlePulse 4s infinite ease-in-out;
+            margin: 0 8px;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        .elegant-container {
+            background: rgba(10, 10, 26, 0.7);
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .letter-content {
+            font-size: 1.1rem;
+            color: var(--moonlight);
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-top: 2rem;
+            text-align: right;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .signature::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: 0;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold));
+        }
+
+        .photo-frame {
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(58, 42, 58, 0.3) 0%, rgba(10, 10, 26, 0.3) 100%);
+            z-index: 1;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .photo-caption {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: var(--silver);
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(10, 10, 26, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+
+        .elegant-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .elegant-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .elegant-btn:hover::before {
+            left: 100%;
+        }
+
+        .elegant-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .hidden-message {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .hidden-message.show {
+            max-height: 2000px;
+            opacity: 1;
+            padding-top: 1.5rem;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.3), transparent);
+            margin: 2rem 0;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: var(--ivory);
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.8; }
+        }
+
+        footer {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: var(--silver);
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .moon-phase-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .moon-phase {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--moonlight);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .moon-phase:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(230, 230, 250, 0.5);
+        }
+
+        .moon-phase::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--night-blue);
+            border-radius: 50%;
+            transition: all 0.5s ease;
+        }
+
+        .moon-phase.new::before {
+            left: 0;
+        }
+
+        .moon-phase.waxing-crescent::before {
+            left: 15%;
+        }
+
+        .moon-phase.first-quarter::before {
+            left: 50%;
+        }
+
+        .moon-phase.waxing-gibbous::before {
+            left: 25%;
+        }
+
+        .moon-phase.full::before {
+            left: 100%;
+        }
+
+        .moon-phase.waning-gibbous::before {
+            left: -25%;
+        }
+
+        .moon-phase.last-quarter::before {
+            left: -50%;
+        }
+
+        .moon-phase.waning-crescent::before {
+            left: -15%;
+        }
+
+        .love-counter {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: var(--silver);
+            text-align: center;
+            margin: 1rem 0;
+            padding: 0.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            background: rgba(10, 10, 26, 0.3);
+        }
+
+        .memory-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+        }
+
+        .memory-card {
+            background: rgba(26, 26, 58, 0.5);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(26, 26, 58, 0.7);
+        }
+
+        .memory-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .memory-text {
+            font-size: 0.9rem;
+            color: var(--moonlight);
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1rem;
+            color: var(--rose-gold);
+            opacity: 0;
+            animation: float-up 6s linear forwards;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(10, 10, 26, 0.7);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .music-player:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .music-player i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--gold);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--night-blue);
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -10px;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: rgba(26, 26, 58, 0.5);
+            border-radius: 6px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .timeline-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-text {
+            font-size: 0.9rem;
+            color: var(--moonlight);
+        }
+
+        .poem-container {
+            column-count: 2;
+            column-gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .poem {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        .poem-title {
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .poem-line {
+            margin-bottom: 0.3rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .poem-line::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--rose-gold);
+            font-size: 0.8rem;
+        }
+
+        .polaroid {
+            background: var(--ivory);
+            padding: 1rem 1rem 2rem 1rem;
+            transform: rotate(2deg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            margin: 1rem;
+            width: 200px;
+            display: inline-block;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+
+        .polaroid-caption {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--night-blue);
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .polaroid-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .promise-box {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px dashed var(--gold);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .promise-box::before {
+            content: '✧';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--night-blue);
+            color: var(--gold);
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .promise-title {
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .promise-text {
+            font-style: italic;
+        }
+
+        .constellation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .constellation-line {
+            position: absolute;
+            background: rgba(230, 230, 250, 0.1);
+            height: 1px;
+            transform-origin: left center;
+        }
+
+        .constellation-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--ivory);
+            border-radius: 50%;
+        }
+
+        .love-meter {
+            width: 100%;
+            height: 20px;
+            background: rgba(26, 26, 58, 0.5);
+            border-radius: 10px;
+            margin: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .love-meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--rose-gold), var(--gold));
+            width: 0;
+            transition: width 2s ease;
+            border-radius: 10px;
+        }
+
+        .love-meter-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            color: var(--night-blue);
+            font-weight: bold;
+        }
+
+        .secret-code {
+            background: rgba(26, 26, 58, 0.5);
+            border: 1px solid var(--gold);
+            border-radius: 4px;
+            padding: 0.5rem;
+            font-family: monospace;
+            color: var(--moonlight);
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (min-width: 768px) {
+            .elegant-title {
+                font-size: 3.5rem;
+            }
+            
+            .letter-content {
+                font-size: 1.2rem;
+            }
+
+            .poem-container {
+                column-count: 3;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .elegant-title {
+                font-size: 4rem;
+            }
+            
+            .elegant-container {
+                padding: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+
+            .poem-container {
+                column-count: 1;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Stars background -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Constellation background -->
+    <div class="constellation" id="constellation"></div>
+    
+    <!-- Floating hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- Music player -->
+    <div class="music-player" id="musicPlayer" title="Putar Musik">
+        <i class="fas fa-music"></i>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Main content -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="elegant-container animate__animated animate__fadeIn">
+                    <div class="text-center mb-5 fade-in-section">
+                        <h1 class="elegant-title mb-4">
+                            Untukmu <span class="moon-icon">🌕</span> di Bawah Bulan Purnama
+                        </h1>
+                        <p class="text-muted">
+                            Sebuah pesan di malam yang tenang
+                        </p>
+                        
+                        <div class="love-counter">
+                            Hari sejak pertama kali bertemu: <span id="daysCounter">0</span> hari
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center fade-in-section">
+                        <div class="col-md-6 mb-4 mb-md-0">
+                            <div class="photo-frame animate__animated animate__fadeIn">
+                                <img src="https://via.placeholder.com/600x400/0a0a1a/e6e6fa?text=Kita+di+bawah+bulan" alt="Kita di bawah bulan" class="img-fluid w-100">
+                                <div class="photo-caption">
+                                    Kita, di bawah cahaya bulan
+                                </div>
+                            </div>
+                            
+                            <div class="moon-phase-container mt-4">
+                                <div class="moon-phase new" title="Bulan Baru"></div>
+                                <div class="moon-phase waxing-crescent" title="Sabit Awal"></div>
+                                <div class="moon-phase first-quarter" title="Paruh Awal"></div>
+                                <div class="moon-phase waxing-gibbous" title="Cembung Awal"></div>
+                                <div class="moon-phase full" title="Purnama"></div>
+                                <div class="moon-phase waning-gibbous" title="Cembung Akhir"></div>
+                                <div class="moon-phase last-quarter" title="Paruh Akhir"></div>
+                                <div class="moon-phase waning-crescent" title="Sabit Akhir"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="letter-content animate__animated animate__fadeIn">
+                                <p>
+                                    Di malam yang diterangi bulan ini, aku ingin mengungkapkan betapa berartinya kamu. 
+                                    Seperti bulan yang selalu setia menemani malam, aku ingin selalu ada untukmu.
+                                </p>
+                                <p>
+                                    Cahayamu lebih terang dari bulan purnama. Senyummu membuat malam yang gelap 
+                                    terasa hangat dan cerah.
+                                </p>
+                                <p>
+                                    Terima kasih sudah menjadi bintang yang menerangi hidupku. Di bawah bulan ini, 
+                                    aku berjanji untuk selalu menghargai setiap momen bersamamu.
+                                </p>
+                                
+                                <div class="love-meter">
+                                    <div class="love-meter-fill" id="loveMeter"></div>
+                                    <div class="love-meter-text" id="loveMeterText">0%</div>
+                                </div>
+                                
+                                <div class="signature">
+                                    - Untukmu
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divider fade-in-section"></div>
+
+                    <div class="text-center fade-in-section">
+                        <button id="showMessageBtn" class="elegant-btn animate__animated animate__pulse animate__infinite">
+                            Buka Pesan Rahasia <i class="fas fa-lock-open ms-2"></i>
+                        </button>
+
+                        <div id="hiddenMessage" class="hidden-message">
+                            <div class="letter-content">
+                                <h4 class="text-center mb-4" style="color: var(--gold); font-weight: 600;">
+                                    Di Bawah Cahaya Bulan
+                                </h4>
+                                <p>
+                                    Bulan purnama ini mengingatkanku pada keindahan yang sederhana namun berarti. 
+                                    Seperti cahaya bulan yang menerangi kegelapan, kehadiranmu menerangi hidupku.
+                                </p>
+                                <p>
+                                    Mungkin kita tidak selalu bersama di bawah bulan yang sama, tapi percayalah 
+                                    hatiku selalu menyala untukmu, seperti bulan yang selalu bersinar untuk bumi.
+                                </p>
+                                <p>
+                                    Di malam yang penuh bintang ini, aku berharap kita bisa terus bersama, 
+                                    menikmati keindahan cinta seperti bulan menikmati tariannya dengan bintang-bintang.
+                                </p>
+                                <div class="text-center mt-4">
+                                    <span class="moon-icon" style="font-size: 2rem;">🌕</span>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button id="specialBtn" class="elegant-btn">
+                                    <i class="fas fa-moon me-2"></i>Pesan Khusus
+                                </button>
+                                
+                                <button id="promisesBtn" class="elegant-btn ms-3">
+                                    <i class="fas fa-heart me-2"></i>Janjiku
+                                </button>
+                            </div>
+                            
+                            <div id="promisesSection" style="display: none;">
+                                <div class="promise-box">
+                                    <div class="promise-title">Janji Pertama</div>
+                                    <div class="promise-text">Aku akan selalu mendengarmu, seperti bulan mendengarkan keluh kesah bintang-bintang di langit malam.</div>
+                                </div>
+                                
+                                <div class="promise-box">
+                                    <div class="promise-title">Janji Kedua</div>
+                                    <div class="promise-text">Aku akan selalu bersinar untukmu, meski kadang redup seperti bulan di balik awan, tapi aku takkan pernah padam.</div>
+                                </div>
+                                
+                                <div class="promise-box">
+                                    <div class="promise-title">Janji Ketiga</div>
+                                    <div class="promise-text">Aku akan menemani malam-malammu yang sunyi, seperti bulan menemani bumi yang gelap.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="secret-code" id="secretCode">
+                                // Kode rahasia untukmu<br>
+                                if (kamu.sedih()) {<br>
+                                &nbsp;&nbsp;aku.hibur();<br>
+                                &nbsp;&nbsp;aku.peluk();<br>
+                                &nbsp;&nbsp;aku.beriCoklat();<br>
+                                }<br>
+                                while (kamu.butuhAku()) {<br>
+                                &nbsp;&nbsp;aku.ada();<br>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="divider fade-in-section"></div>
+                    
+                    <div class="fade-in-section">
+                        <h4 class="text-center mb-4" style="color: var(--gold); font-weight: 600;">
+                            Kenangan Kita
+                        </h4>
+                        
+                        <div class="memory-container">
+                            <div class="memory-card">
+                                <div class="memory-date">15 Januari 2023</div>
+                                <div class="memory-text">Pertama kali bertemu di bawah bulan purnama, saat kau menunjuk rasi bintang yang tak pernah kupahami.</div>
+                            </div>
+                            
+                            <div class="memory-card">
+                                <div class="memory-date">14 Februari 2023</div>
+                                <div class="memory-text">Kau memberiku sebatang cokelat yang masih tersimpan rapi di laci meja kerjaku.</div>
+                            </div>
+                            
+                            <div class="memory-card">
+                                <div class="memory-date">21 Juni 2023</div>
+                                <div class="memory-text">Berjalan-jalan di pantai saat bulan purnama, mendengarkan ombak dan ceritamu yang tak pernah habis.</div>
+                            </div>
+                            
+                            <div class="memory-card">
+                                <div class="memory-date">7 Agustus 2023</div>
+                                <div class="memory-text">Melihat hujan meteor bersama, sambil berbagi jaket karena lupa membawa yang kedua.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="divider fade-in-section"></div>
+                    
+                    <div class="fade-in-section">
+                        <h4 class="text-center mb-4" style="color: var(--gold); font-weight: 600;">
+                            Timeline Cinta Kita
+                        </h4>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item left">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">15 Januari 2023</div>
+                                    <div class="timeline-text">Pertama kali bertemu di acara pengamatan bulan di observatorium kota.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item right">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">20 Februari 2023</div>
+                                    <div class="timeline-text">Pertama kali makan malam bersama di restoran kecil dengan pemandangan bulan purnama.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item left">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">14 Maret 2023</div>
+                                    <div class="timeline-text">Kau mengirimku puisi tentang bulan yang membuat hatiku bergetar.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item right">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">1 April 2023</div>
+                                    <div class="timeline-text">Berjalan-jalan di taman bunga sakura di malam hari, dengan bulan sebagai saksi.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item left">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">20 Mei 2023</div>
+                                    <div class="timeline-text">Pertama kali mengakui perasaan di bawah bulan purnama yang indah.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="divider fade-in-section"></div>
+                    
+                    <div class="fade-in-section">
+                        <h4 class="text-center mb-4" style="color: var(--gold); font-weight: 600;">
+                            Puisi Bulan Untukmu
+                        </h4>
+                        
+                        <div class="poem-container">
+                            <div class="poem">
+                                <div class="poem-title">Bulan dan Bintang</div>
+                                <div class="poem-line">Bulan bersinar di langit malam</div>
+                                <div class="poem-line">Bintang-bintang menari riang</div>
+                                <div class="poem-line">Tapi tak ada yang lebih terang</div>
+                                <div class="poem-line">Daripada senyum di wajahmu</div>
+                            </div>
+                            
+                            <div class="poem">
+                                <div class="poem-title">Cahayamu</div>
+                                <div class="poem-line">Jika bulan adalah cahaya</div>
+                                <div class="poem-line">Yang menerangi malam</div>
+                                <div class="poem-line">Maka kaulah matahari</div>
+                                <div class="poem-line">Yang menghangatkan hidupku</div>
+                            </div>
+                            
+                            <div class="poem">
+                                <div class="poem-title">Tarian Bintang</div>
+                                <div class="poem-line">Di bawah bulan purnama</div>
+                                <div class="poem-line">Kita menatap bintang</div>
+                                <div class="poem-line">Yang menari-nari</div>
+                                <div class="poem-line">Seperti hatiku saat bersamamu</div>
+                            </div>
+                            
+                            <div class="poem">
+                                <div class="poem-title">Malam yang Sempurna</div>
+                                <div class="poem-line">Tak perlu bulan purnama</div>
+                                <div class="poem-line">Tak perlu bintang gemintang</div>
+                                <div class="poem-line">Cukup kamu di sampingku</div>
+                                <div class="poem-line">Untuk membuat malam yang sempurna</div>
+                            </div>
+                            
+                            <div class="poem">
+                                <div class="poem-title">Janji Bulan</div>
+                                <div class="poem-line">Seperti bulan yang selalu kembali</div>
+                                <div class="poem-line">Setelah menghilang di ufuk barat</div>
+                                <div class="poem-line">Aku pun akan selalu kembali</div>
+                                <div class="poem-line">Ke pelukanmu yang hangat</div>
+                            </div>
+                            
+                            <div class="poem">
+                                <div class="poem-title">Rasi Cinta</div>
+                                <div class="poem-line">Jika langit adalah kanvas</div>
+                                <div class="poem-line">Dan bintang adalah cat</div>
+                                <div class="poem-line">Aku akan melukis</div>
+                                <div class="poem-line">Namamu di antara rasi-rasi</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="divider fade-in-section"></div>
+                    
+                    <div class="fade-in-section">
+                        <h4 class="text-center mb-4" style="color: var(--gold); font-weight: 600;">
+                            Galeri Kenangan
+                        </h4>
+                        
+                        <div class="polaroid-container">
+                            <div class="polaroid">
+                                <img src="https://via.placeholder.com/300x200/0a0a1a/e6e6fa?text=Momen+Pertama" alt="Momen Pertama">
+                                <div class="polaroid-caption">Pertama kali bertemu</div>
+                            </div>
+                            
+                            <div class="polaroid" style="transform: rotate(-2deg);">
+                                <img src="https://via.placeholder.com/300x200/0a0a1a/e6e6fa?text=Bersama+di+Pantai" alt="Bersama di Pantai">
+                                <div class="polaroid-caption">Malam di pantai</div>
+                            </div>
+                            
+                            <div class="polaroid" style="transform: rotate(3deg);">
+                                <img src="https://via.placeholder.com/300x200/0a0a1a/e6e6fa?text=Hujan+Meteor" alt="Hujan Meteor">
+                                <div class="polaroid-caption">Menonton hujan meteor</div>
+                            </div>
+                            
+                            <div class="polaroid" style="transform: rotate(-1deg);">
+                                <img src="https://via.placeholder.com/300x200/0a0a1a/e6e6fa?text=Makan+Malam" alt="Makan Malam">
+                                <div class="polaroid-caption">Makan malam spesial</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="fade-in-section">
+        <p class="mb-0">Ditulis dengan <i class="fas fa-heart" style="color: #d4af37;"></i> di malam bulan purnama | © <span id="year"></span></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Create stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            const starCount = 200;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                const size = Math.random() * 3;
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const duration = Math.random() * 4 + 2;
+                const delay = Math.random() * 5;
+
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${posX}px`;
+                star.style.top = `${posY}px`;
+                star.style.animationDuration = `${duration}s`;
+                star.style.animationDelay = `${delay}s`;
+
+                container.appendChild(star);
+            }
+        }
+
+        // Create constellation
+        function createConstellation() {
+            const container = document.getElementById('constellation');
+            const starCount = 30;
+            const stars = [];
+            
+            // Create stars
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('constellation-star');
+                
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const size = Math.random() * 2 + 1;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${posX}px`;
+                star.style.top = `${posY}px`;
+                
+                container.appendChild(star);
+                stars.push({element: star, x: posX, y: posY});
+            }
+            
+            // Create lines between some stars
+            for (let i = 0; i < stars.length; i++) {
+                for (let j = i + 1; j < stars.length; j++) {
+                    // Only connect some stars randomly
+                    if (Math.random() > 0.9) {
+                        const line = document.createElement('div');
+                        line.classList.add('constellation-line');
+                        
+                        const star1 = stars[i];
+                        const star2 = stars[j];
+                        
+                        const dx = star2.x - star1.x;
+                        const dy = star2.y - star1.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        line.style.width = `${distance}px`;
+                        line.style.left = `${star1.x}px`;
+                        line.style.top = `${star1.y}px`;
+                        line.style.transform = `rotate(${Math.atan2(dy, dx)}rad)`;
+                        
+                        container.appendChild(line);
+                    }
+                }
+            }
+        }
+
+        // Create floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '❤️';
+                    
+                    const startX = Math.random() * window.innerWidth;
+                    const size = Math.random() * 20 + 10;
+                    const duration = Math.random() * 4 + 3;
+                    
+                    heart.style.left = `${startX}px`;
+                    heart.style.fontSize = `${size}px`;
+                    heart.style.animationDuration = `${duration}s`;
+                    
+                    container.appendChild(heart);
+                    
+                    // Remove heart after animation
+                    setTimeout(() => {
+                        heart.remove();
+                    }, duration * 1000);
+                }
+            }, 300);
+        }
+
+        // Show hidden message
+        document.getElementById('showMessageBtn').addEventListener('click', function() {
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            hiddenMessage.classList.add('show');
+            this.style.display = 'none';
+            
+            // Animate love meter
+            const loveMeter = document.getElementById('loveMeter');
+            const loveMeterText = document.getElementById('loveMeterText');
+            let percentage = 0;
+            
+            const interval = setInterval(() => {
+                percentage += 1;
+                loveMeter.style.width = `${percentage}%`;
+                loveMeterText.textContent = `${percentage}%`;
+                
+                if (percentage >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        document.getElementById('secretCode').style.display = 'block';
+                    }, 500);
+                }
+            }, 30);
+            
+            // Create gentle animation
+            const moons = document.querySelectorAll('.moon-icon');
+            moons.forEach(moon => {
+                moon.style.animation = 'gentlePulse 2s infinite ease-in-out';
+            });
+        });
+
+        // Special button effect
+        document.getElementById('specialBtn').addEventListener('click', function() {
+            // Create a moon burst effect
+            const burst = document.createElement('div');
+            burst.innerHTML = '🌕';
+            burst.style.position = 'fixed';
+            burst.style.fontSize = '3rem';
+            burst.style.color = 'var(--gold)';
+            burst.style.left = '50%';
+            burst.style.top = '50%';
+            burst.style.transform = 'translate(-50%, -50%) scale(0)';
+            burst.style.opacity = '0';
+            burst.style.zIndex = '9999';
+            burst.style.pointerEvents = 'none';
+            burst.style.transition = 'all 0.8s ease-out';
+            
+            document.body.appendChild(burst);
+            
+            setTimeout(() => {
+                burst.style.transform = 'translate(-50%, -50%) scale(3)';
+                burst.style.opacity = '0.8';
+            }, 10);
+            
+            setTimeout(() => {
+                burst.style.transform = 'translate(-50%, -50%) scale(5)';
+                burst.style.opacity = '0';
+            }, 500);
+            
+            setTimeout(() => {
+                burst.remove();
+            }, 1500);
+            
+            // Show alert with romantic message
+            alert("Di setiap malam bulan purnama, aku akan selalu mengingatmu. Terima kasih telah menjadi cahaya dalam hidupku.");
+        });
+        
+        // Promises button
+        document.getElementById('promisesBtn').addEventListener('click', function() {
+            const promisesSection = document.getElementById('promisesSection');
+            if (promisesSection.style.display === 'none') {
+                promisesSection.style.display = 'block';
+                this.innerHTML = '<i class="fas fa-heart me-2"></i>Tutup Janjiku';
+            } else {
+                promisesSection.style.display = 'none';
+                this.innerHTML = '<i class="fas fa-heart me-2"></i>Janjiku';
+            }
+        });
+
+        // Music player
+        const musicPlayer = document.getElementById('musicPlayer');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+        
+        musicPlayer.addEventListener('click', function() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicPlayer.innerHTML = '<i class="fas fa-music"></i>';
+                musicPlayer.title = 'Putar Musik';
+            } else {
+                bgMusic.play();
+                musicPlayer.innerHTML = '<i class="fas fa-pause"></i>';
+                musicPlayer.title = 'Jeda Musik';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Set days counter (example: since January 15, 2023)
+        const firstDate = new Date('2023-01-15');
+        const today = new Date();
+        const diffTime = Math.abs(today - firstDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        document.getElementById('daysCounter').textContent = diffDays;
+
+        // Intersection Observer for fade-in effects
+        const fadeInSections = document.querySelectorAll('.fade-in-section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {threshold: 0.1});
+        
+        fadeInSections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialize when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            createConstellation();
+            createFloatingHearts();
+            
+            // Add gentle hover effect to buttons
+            const buttons = document.querySelectorAll('.elegant-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    btn.style.boxShadow = '0 6px 20px rgba(212, 175, 55, 0.3)';
+                });
+                
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.2)';
+                });
+            });
+            
+            // Add subtle animation to signature
+            const signature = document.querySelector('.signature');
+            setInterval(() => {
+                signature.style.transform = 'translateX(5px)';
+                setTimeout(() => {
+                    signature.style.transform = 'translateX(0)';
+                }, 1000);
+            }, 5000);
+            
+            // Moon phase click effects
+            const moonPhases = document.querySelectorAll('.moon-phase');
+            moonPhases.forEach(phase => {
+                phase.addEventListener('click', () => {
+                    const title = phase.getAttribute('title');
+                    alert(`Fase bulan: ${title}\n\nDalam setiap fase bulan, cintaku padamu tetap utuh.`);
+                });
+            });
+            
+            // Memory card hover effects
+            const memoryCards = document.querySelectorAll('.memory-card');
+            memoryCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    const date = card.querySelector('.memory-date').textContent;
+                    const text = card.querySelector('.memory-text').textContent;
+                    card.setAttribute('data-original-text', text);
+                    card.querySelector('.memory-text').textContent = 'Klik untuk melihat detail...';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    const originalText = card.getAttribute('data-original-text');
+                    if (originalText) {
+                        card.querySelector('.memory-text').textContent = originalText;
+                    }
+                });
+                
+                card.addEventListener('click', () => {
+                    const date = card.querySelector('.memory-date').textContent;
+                    alert(`Kenangan pada ${date}\n\n${card.getAttribute('data-original-text')}`);
+                });
+            });
+            
+            // Polaroid click effects
+            const polaroids = document.querySelectorAll('.polaroid');
+            polaroids.forEach(polaroid => {
+                polaroid.addEventListener('click', () => {
+                    const caption = polaroid.querySelector('.polaroid-caption').textContent;
+                    alert(`Foto: ${caption}\n\nIni adalah salah satu momen berharga kita bersama.`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
